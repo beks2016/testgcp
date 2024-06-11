@@ -1,10 +1,11 @@
-FROM python:3.9-slim
+FROM node:14-slim
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+COPY package*.json ./
+RUN npm install
 
 COPY . .
 
-CMD ["python", "app.py"]
+ENV PORT=8080
+CMD ["node", "app.js"]
