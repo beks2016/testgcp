@@ -2,10 +2,14 @@ FROM node:14-slim
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
-RUN npm install
+RUN npm init -y
+
+RUN npm install express @google-cloud/storage
 
 COPY . .
 
 ENV PORT=8080
+
+EXPOSE 8080
+
 CMD ["node", "app.js"]
