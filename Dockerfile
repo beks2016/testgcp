@@ -1,15 +1,16 @@
-FROM node:14-slim
+FROM node:12-slim
 
 WORKDIR /usr/src/app
 
-RUN npm init -y
 
-RUN npm install express @google-cloud/storage
+COPY package*.json ./
 
-COPY . .
+# If you add a package-lock.json, speed your build by switching to 'npm ci'.
+# RUN npm ci --only=production
+RUN npm install --only=production
 
-ENV PORT=8080
+# Copy local code to the container image.
+COPY . ./
 
-EXPOSE 8080
-
-CMD ["node", "app.js"]
+# Run the web service on container startup.
+CMD [ "npm", "start" ]
