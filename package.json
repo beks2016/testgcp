@@ -10,6 +10,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "express": "^4.17.1",
-    "@google-cloud/storage": "^5.8.5"
+    "@google-cloud/storage": "^5.8.5",
+    "body-parser": "^1.19.0"
   }
 }
